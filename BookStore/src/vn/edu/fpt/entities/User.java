@@ -16,15 +16,17 @@ public class User {
     private String lastName;
     private String username;
     private String email;
+    private Password password;
 
     User() {
     }
 
-    public User(String firstName, String lastName, String username, String email) {
+    public User(String firstName, String lastName, String username, String email, Password password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -57,6 +59,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getPassword() {
+        return password.getSecuredPassword();
     }
 
 }
