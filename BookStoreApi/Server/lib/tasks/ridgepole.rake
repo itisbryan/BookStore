@@ -1,5 +1,6 @@
-namespace :ridgepole do
+# frozen_string_literal: true
 
+namespace :ridgepole do
   desc 'Apply ridgepole Schemafile file'
   task apply: :environment do
     ridgepole('--apply')

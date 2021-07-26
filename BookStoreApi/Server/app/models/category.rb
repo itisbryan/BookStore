@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: categories
@@ -20,5 +22,13 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Category < ApplicationRecord
+  # Validates attribute label
+  validates_presence_of :label
+  validates_length_of :label, maximum: 255, message: 'less than 255 characters'
+  validates_uniqueness_of :label, condition: -> { where(is_public: true) }
 
+  has_many :books, foreign_key: :category_id, dependent: :destroy
+  belongs_to :user
+
+  validates_associated :books, :user
 end

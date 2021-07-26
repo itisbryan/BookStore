@@ -1,13 +1,14 @@
-create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+# frozen_string_literal: true
 
+create_table 'users', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin' do |t|
   ## Basic Information
   t.string :first_name, null: false, limit: 255
   t.string :last_name, limit: 255
   t.string :username, null: false, limit: 255
 
   ## Database authenticatable
-  t.string :email,              null: false, default: ""
-  t.string :encrypted_password, null: false, default: ""
+  t.string :email,              null: false, default: ''
+  t.string :encrypted_password, null: false, default: ''
 
   ## Recoverable
   t.string   :reset_password_token

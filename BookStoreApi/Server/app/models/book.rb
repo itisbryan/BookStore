@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -27,4 +29,15 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Book < ApplicationRecord
+  validates_presence_of %i[isbn title publisher author_name published_year]
+  validates_uniqueness_of :isbn, scope: %i[title]
+  validates_numericality_of :price, greater_than_or_equal_to: 0, message: ''
+  validates_numericality_of :published_year, greater_than_or_equal_to: 0,
+                                             less_than_or_equal_to: Date.today.year.to_i,
+                                             message: ''
+
+  belongs_to :user
+  belongs_to :category
+
+  validates_associated :category, :user
 end
